@@ -1,0 +1,66 @@
+ext {
+    //Android
+    androidMinSdkVersion = 21
+    androidTargetSdkVersion = 26
+    androidCompileSdkVersion = 26
+
+    //Libraries
+    kotlinVersion = '1.1.60'
+    appCompatVersion = '26.1.0'
+    constraintVersion = '1.0.2'
+    koinVersion = '0.5.2'
+    rxJavaVersion = '2.0.5'
+    rxAndroidVersion = '2.0.1'
+    retrofit2rxJava2Version = '1.0.0'
+    retrofit2Version = '2.1.0'
+    retrofit2GsonConverterVersion = '2.1.0'
+    loggingInterceptorVersion = '3.4.1'
+
+    //Testing
+    jUnitVersion = '4.12'
+    espressoVersion = '3.0.1'
+    testRunnerVersion = '1.0.1'
+
+    presentationDependencies = [
+            kotlinLib:          "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            appCompat:          "com.android.support:appcompat-v7:${appCompatVersion}",
+            constraint:         "com.android.support.constraint:constraint-layout:${constraintVersion}",
+            koin:               "org.koin:koin-android:${koinVersion}"
+    ]
+
+    presentationTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            espresso:           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            testRunner:         "com.android.support.test:runner:${testRunnerVersion}",
+            testKoin:           "org.koin:koin-test:${koinVersion}"
+    ]
+
+    domainDependencies = [
+
+    ]
+
+    domainTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+    ]
+
+    dataBoundaryDependencies = [
+
+    ]
+
+    dataDependencies = [
+            kotlinLib:          "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}",
+            rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+            rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            retrofit2rxJava2:   "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${retrofit2rxJava2Version}",
+            retrofit2:          "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            retrofit2GsonConverter: "com.squareup.retrofit2:converter-gson:${retrofit2GsonConverterVersion}",
+            loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${loggingInterceptorVersion}",
+    ]
+
+    dataTestDependencies = [
+            junit:              "junit:junit:${jUnitVersion}",
+            testRunner:         "com.android.support.test:runner:${testRunnerVersion}",
+            espresso:           "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+    ]
+
+}

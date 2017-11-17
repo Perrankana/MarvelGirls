@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    def globalConfig = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfig["androidCompileSdkVersion"]
+
+    defaultConfig {
+        minSdkVersion globalConfig["androidMinSdkVersion"]
+        targetSdkVersion globalConfig["androidTargetSdkVersion"]
+        versionCode globalConfig["androidVersionCode"]
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':databoundary')
+
+    implementation dataDependencies.kotlinLib
+    implementation dataDependencies.rxJava
+    implementation dataDependencies.rxAndroid
+    implementation dataDependencies.retrofit2rxJava2
+    implementation dataDependencies.retrofit2
+    implementation dataDependencies.retrofit2GsonConverter
+    implementation dataDependencies.loggingInterceptor
+
+    testImplementation dataTestDependencies.junit
+
+    androidTestImplementation dataTestDependencies.testRunner
+    androidTestImplementation dataTestDependencies.espresso
+}
+
+repositories {
+    mavenCentral()
+}

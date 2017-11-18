@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MarvelGirls</string>
+    <string name="app_name">Marvel Girls</string>
+
+    <!-- errors -->
+    <string name="default_error">Something went wrong</string>
+    <string name="no_connection_error">Seems you don\'t have connection</string>
+    <string name="no_results_error">No results found</string>
+    <string name="try_again_button_text">Try again</string>
 </resources>

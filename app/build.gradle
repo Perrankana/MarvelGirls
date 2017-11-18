@@ -44,13 +44,17 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation presentationDependencies.kotlinLib
     implementation presentationDependencies.appCompat
+    implementation presentationDependencies.recyclerView
+    implementation presentationDependencies.cardView
+    implementation presentationDependencies.design
     implementation presentationDependencies.constraint
+    implementation presentationDependencies.rxJava
+    implementation presentationDependencies.rxAndroid
     implementation presentationDependencies.koin
     implementation presentationDependencies.okHttp
     implementation presentationDependencies.retrofit2rxJava2
     implementation presentationDependencies.retrofit2
     implementation presentationDependencies.retrofit2GsonConverter
-    implementation presentationDependencies.okHttp
     implementation presentationDependencies.loggingInterceptor
 
     testImplementation presentationTestDependencies.junit

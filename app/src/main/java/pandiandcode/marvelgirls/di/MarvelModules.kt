@@ -16,7 +16,7 @@ import pandiandcode.data.repository.MarvelRepository
 import pandiandcode.databoundary.ComicRepository
 import pandiandcode.domain.usecases.GetComicsUseCase
 import pandiandcode.marvelgirls.utils.generateMd5
-import pandiandcode.marvelgirls.viewmodel.MainViewModel
+import pandiandcode.marvelgirls.viewmodel.comics.MainViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*

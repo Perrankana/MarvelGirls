@@ -47,6 +47,7 @@ dependencies {
     implementation presentationDependencies.recyclerView
     implementation presentationDependencies.cardView
     implementation presentationDependencies.design
+    implementation presentationDependencies.picasso
     implementation presentationDependencies.constraint
     implementation presentationDependencies.rxJava
     implementation presentationDependencies.rxAndroid

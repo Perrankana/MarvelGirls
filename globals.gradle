@@ -8,6 +8,7 @@ ext {
     kotlinVersion = '1.1.60'
     appCompatVersion = '26.1.0'
     constraintVersion = '1.0.2'
+    picassoVersion = '2.5.2'
     koinVersion = '0.5.2'
     rxJavaVersion = '2.0.5'
     rxAndroidVersion = '2.0.1'
@@ -32,6 +33,7 @@ ext {
             rxJava:             "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             rxAndroid:          "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
             constraint:         "com.android.support.constraint:constraint-layout:${constraintVersion}",
+            picasso:            "com.squareup.picasso:picasso:${picassoVersion}",
             koin:               "org.koin:koin-android:${koinVersion}",
             retrofit2rxJava2:   "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${retrofit2rxJava2Version}",
             retrofit2:          "com.squareup.retrofit2:retrofit:${retrofit2Version}",

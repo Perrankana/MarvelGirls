@@ -5,7 +5,7 @@
 
         <variable
             name="model"
-            type="pandiandcode.marvelgirls.viewmodel.MainViewModel"/>
+            type="pandiandcode.marvelgirls.viewmodel.comics.MainViewModel"/>
 
     </data>
 
@@ -35,9 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            bind:comicsList="@{ model.comicsList }"
+            app:layoutManager="LinearLayoutManager"/>
 
-            bind:layoutManager="LinearLayoutManager"/>
-        <!--bind:comics="@{ model.comics }"-->
 
     </android.support.design.widget.CoordinatorLayout>
 

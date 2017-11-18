@@ -4,7 +4,7 @@ import android.os.Bundle
 import org.koin.android.ext.android.inject
 import pandiandcode.marvelgirls.R
 import pandiandcode.marvelgirls.viewmodel.BaseViewModel
-import pandiandcode.marvelgirls.viewmodel.MainViewModel
+import pandiandcode.marvelgirls.viewmodel.comics.MainViewModel
 
 class MainActivity : BaseActivity() {
 

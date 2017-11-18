@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout >
+<layout>
 
     <data>
 
         <variable
-            name="comic"
-            type="pandiandcode.databoundary.ComicData"/>
+            name="model"
+            type="pandiandcode.marvelgirls.viewmodel.comics.ComicItemViewModel"/>
 
     </data>
 
@@ -24,9 +24,8 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/default_image_height"
-                />
-            <!--android:src="@{ comic.thumbnail }"-->
+
+                android:src="@{ model.image }"/>
 
             <TextView
                 style="@style/TextView.Title"
@@ -34,9 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
                 android:padding="@dimen/default_margin"
-
+                android:text="@{ model.name }"
                 tools:text="Julia becomes worried about her boyfriend, Holt when he explores the dar"/>
-            <!--android:text="@{ comic.name }"-->
 
         </LinearLayout>
 

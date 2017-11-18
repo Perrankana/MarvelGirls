@@ -7,6 +7,7 @@ import pandiandcode.databoundary.ComicListData
 import pandiandcode.domain.usecases.ComicsParam
 import pandiandcode.domain.usecases.GetComicsUseCase
 import pandiandcode.marvelgirls.BR
+import pandiandcode.marvelgirls.navigation.Navigator
 import pandiandcode.marvelgirls.viewmodel.BaseViewModel
 
 /**
@@ -16,6 +17,11 @@ class MainViewModel(comicsUseCase: GetComicsUseCase) : BaseViewModel() {
 
     var mComicsUseCase = comicsUseCase
     var mComicsList = ObservableArrayList<ComicItemViewModel>()
+    private var mNavigator: Navigator? = null
+
+    fun setNavigator(navigator: Navigator?) {
+        mNavigator = navigator
+    }
 
     @Bindable
     fun isProgressVisible(): Boolean = true
@@ -37,7 +43,7 @@ class MainViewModel(comicsUseCase: GetComicsUseCase) : BaseViewModel() {
     fun onComicsDataListLoaded(comicListData: ComicListData) {
         mComicsList.clear()
         comicListData.comicList.forEach {
-            mComicsList.add(ComicItemViewModel(it.name, it.thumbnail))
+            mComicsList.add(ComicItemViewModel( mNavigator,it.id, it.name, it.thumbnail))
         }
         notifyPropertyChanged(BR.comicsList)
     }

@@ -16,6 +16,7 @@ import pandiandcode.data.repository.MarvelRepository
 import pandiandcode.databoundary.ComicRepository
 import pandiandcode.domain.usecases.GetComicsUseCase
 import pandiandcode.marvelgirls.utils.generateMd5
+import pandiandcode.marvelgirls.viewmodel.comicdescription.ComicDetailViewModel
 import pandiandcode.marvelgirls.viewmodel.comics.MainViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,12 +36,18 @@ class MyModule : AndroidModule() {
             provide { MainViewModel(get()) }
         }
 
+        context(name = "ComicDetailActivity"){
+            provide {ComicDetailViewModel()}
+        }
+
         provide { provideGetComicsUseCase(get()) }
 
         provide { provideMarvelDataSource(get()) }
 
         provide { provideComicRepository(get()) }
     }
+
+
 }
 
 fun provideGetComicsUseCase(marvelRepository: ComicRepository): GetComicsUseCase

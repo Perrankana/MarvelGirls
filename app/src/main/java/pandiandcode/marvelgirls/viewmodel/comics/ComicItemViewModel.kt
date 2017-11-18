@@ -2,13 +2,16 @@ package pandiandcode.marvelgirls.viewmodel.comics
 
 import android.databinding.Bindable
 import pandiandcode.marvelgirls.BR
+import pandiandcode.marvelgirls.navigation.Navigator
 import pandiandcode.marvelgirls.viewmodel.BaseViewModel
 
 /**
  * Created by Rocio Ortega on 18/11/2017.
  */
-class ComicItemViewModel(name: String, image: String) : BaseViewModel() {
+class ComicItemViewModel(navigator: Navigator?, id: Int, name: String, image: String) : BaseViewModel() {
 
+    var mNavigator = navigator
+    var mId = id
     var mName = name
     var mImage = image
 
@@ -24,7 +27,7 @@ class ComicItemViewModel(name: String, image: String) : BaseViewModel() {
     fun getImage(): String = mImage
 
     fun onItemClicked(source: Object) {
-
+        mNavigator?.onComicSelected(mId)
     }
 
     override fun onLoad() {

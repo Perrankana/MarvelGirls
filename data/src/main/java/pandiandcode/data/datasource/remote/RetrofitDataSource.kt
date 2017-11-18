@@ -16,4 +16,15 @@ class RetrofitDataSource(private val mMarvelDataApi: MarvelDataApi) : MarvelData
                     .flatMap { comicListResponse -> Observable.just(comicListResponse.body()) }
                     .flatMap { comicList -> Observable.just(toComicListData(comicList)) }
 
+    override fun containsCharacterComic(characterId: Int): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getComic(comicId: Int): Observable<ComicData> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun saveComics(characterId: Int, comicListData: ComicListData) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

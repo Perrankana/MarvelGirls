@@ -7,4 +7,4 @@ data class ComicData(val id: Int,
                      val name: String,
                      val description: String?,
                      val thumbnail: String,
-                     val image: String)
+                     val images: ArrayList<String>)

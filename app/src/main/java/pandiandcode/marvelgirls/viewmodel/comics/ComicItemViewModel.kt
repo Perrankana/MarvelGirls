@@ -1,6 +1,7 @@
 package pandiandcode.marvelgirls.viewmodel.comics
 
 import android.databinding.Bindable
+import android.os.Bundle
 import pandiandcode.marvelgirls.BR
 import pandiandcode.marvelgirls.navigation.Navigator
 import pandiandcode.marvelgirls.viewmodel.BaseViewModel
@@ -30,7 +31,7 @@ class ComicItemViewModel(navigator: Navigator?, id: Int, name: String, image: St
         mNavigator?.onComicSelected(mId)
     }
 
-    override fun onLoad() {
+    override fun onLoad(bundle: Bundle?) {
 
     }
 }

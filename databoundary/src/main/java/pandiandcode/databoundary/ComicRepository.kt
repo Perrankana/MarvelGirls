@@ -10,4 +10,5 @@ interface ComicRepository {
 
     fun getComics(characterId: Int) : Observable<ComicListData>
 
+    fun getComic(comicId: Int) : Observable<ComicData>
 }

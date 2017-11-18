@@ -10,10 +10,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.module.AndroidModule
 import pandiandcode.data.datasource.MarvelDataSource
+import pandiandcode.data.datasource.local.InMemoryDataSource
 import pandiandcode.data.datasource.remote.MarvelDataApi
 import pandiandcode.data.datasource.remote.RetrofitDataSource
 import pandiandcode.data.repository.MarvelRepository
 import pandiandcode.databoundary.ComicRepository
+import pandiandcode.domain.usecases.GetComicUseCase
 import pandiandcode.domain.usecases.GetComicsUseCase
 import pandiandcode.marvelgirls.utils.generateMd5
 import pandiandcode.marvelgirls.viewmodel.comicdescription.ComicDetailViewModel
@@ -36,15 +38,19 @@ class MyModule : AndroidModule() {
             provide { MainViewModel(get()) }
         }
 
-        context(name = "ComicDetailActivity"){
-            provide {ComicDetailViewModel()}
+        context(name = "ComicDetailActivity") {
+            provide { ComicDetailViewModel(get()) }
         }
 
         provide { provideGetComicsUseCase(get()) }
 
-        provide { provideMarvelDataSource(get()) }
+        provide { provideGetComicUseCase(get()) }
 
-        provide { provideComicRepository(get()) }
+        provide("remoteDataSource") { provideRemoteDataSource(get()) }
+
+        provide("localDataSource") { provideLocalDataSource() }
+
+        provide { provideComicRepository(get("remoteDataSource"), get("localDataSource")) }
     }
 
 
@@ -53,11 +59,17 @@ class MyModule : AndroidModule() {
 fun provideGetComicsUseCase(marvelRepository: ComicRepository): GetComicsUseCase
         = GetComicsUseCase(Schedulers.io(), AndroidSchedulers.mainThread(), marvelRepository)
 
-fun provideMarvelDataSource(marvelDataApi: MarvelDataApi): MarvelDataSource
+fun provideGetComicUseCase(marvelRepository: ComicRepository): GetComicUseCase
+        = GetComicUseCase(Schedulers.io(), AndroidSchedulers.mainThread(), marvelRepository)
+
+fun provideRemoteDataSource(marvelDataApi: MarvelDataApi): MarvelDataSource
         = RetrofitDataSource(marvelDataApi)
 
-fun provideComicRepository(marvelDataSource: MarvelDataSource): ComicRepository
-        = MarvelRepository(marvelDataSource)
+fun provideLocalDataSource(): MarvelDataSource
+        = InMemoryDataSource()
+
+fun provideComicRepository(remoteDataSource: MarvelDataSource, localDataSource: MarvelDataSource): ComicRepository
+        = MarvelRepository(remoteDataSource, localDataSource)
 
 class RemoteDataSourceModule : AndroidModule() {
     override fun context() = applicationContext {

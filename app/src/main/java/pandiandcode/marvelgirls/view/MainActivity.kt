@@ -18,7 +18,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.onLoad()
+        viewModel.onLoad(savedInstanceState)
 
         val navigator = object: Navigator{
             override fun onComicSelected(comicId: Int) {

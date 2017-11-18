@@ -30,4 +30,9 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="ExpandedTextAppearance">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

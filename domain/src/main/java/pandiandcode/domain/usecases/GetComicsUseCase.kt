@@ -30,4 +30,4 @@ class ComicsParam {
 fun getRandomNumber(to: Int, from: Int): Int = Random().nextInt(to - from) + from
 
 fun getMarvelGirlsCharacters(): IntArray = intArrayOf(1009629, 1009157, 1009609, 1009189, 1010338, 1009438, 1017577,
-        1009562, 1010972, 1017308, 1010971)
+        1009562, 1010972, 1010971)

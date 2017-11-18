@@ -3,6 +3,7 @@ package pandiandcode.marvelgirls.viewmodel.comics
 import android.databinding.Bindable
 import android.databinding.ObservableArrayList
 import android.databinding.ObservableList
+import android.os.Bundle
 import pandiandcode.databoundary.ComicListData
 import pandiandcode.domain.usecases.ComicsParam
 import pandiandcode.domain.usecases.GetComicsUseCase
@@ -33,7 +34,7 @@ class MainViewModel(comicsUseCase: GetComicsUseCase) : BaseViewModel() {
     @Bindable
     fun getComicsList(): ObservableList<ComicItemViewModel> = mComicsList
 
-    override fun onLoad() {
+    override fun onLoad(bundle : Bundle?) {
         mComicsUseCase.run(ComicsParam())
                 .doFinally({ setProgressVisible(false) })
                 .subscribe(this::onComicsDataListLoaded)

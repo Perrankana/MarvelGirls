@@ -2,6 +2,7 @@ package pandiandcode.marvelgirls.view
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import org.koin.android.ext.android.inject
 import pandiandcode.marvelgirls.R
 import pandiandcode.marvelgirls.viewmodel.BaseViewModel
@@ -18,9 +19,14 @@ class ComicDetailActivity : BaseActivity() {
 
     override fun getLayout(): Int = R.layout.activity_comic_description
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.onLoad(intent.extras)
+    }
+
     companion object {
 
-        private val INTENT_COMIC_ID = "user_id"
+        val INTENT_COMIC_ID = "user_id"
 
         fun newIntent(context: Context, comicId: Int): Intent {
             val intent = Intent(context, ComicDetailActivity::class.java)

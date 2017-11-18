@@ -1,9 +1,11 @@
 package pandiandcode.marvelgirls.bindingHelpers
 
 import android.databinding.BindingAdapter
+import android.databinding.BindingConversion
 import android.databinding.ObservableArrayList
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
+import android.view.View
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import pandiandcode.marvelgirls.R
@@ -39,3 +41,10 @@ fun setImageUrl(view: ImageView, url: String) {
         view.setImageResource(R.drawable.ic_place_holder)
     }
 }
+
+@BindingConversion
+fun convertBooleanToVisibility(visible: Boolean): Int = when {
+    visible -> View.VISIBLE
+    else -> View.GONE
+}
+

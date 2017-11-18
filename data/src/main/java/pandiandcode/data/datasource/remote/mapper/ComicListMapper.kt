@@ -17,11 +17,13 @@ fun toComicListData(comicList: ComicList): ComicListData {
 }
 
 fun toComicData(comicItem: ComicItem): ComicData
-        = ComicData(comicItem.id, comicItem.title, comicItem.description, comicItem.thumbnail.path, getRamdonImage(comicItem))
+        = ComicData(comicItem.id, comicItem.title, comicItem.description, comicItem.thumbnail.path, getRandomImage
+(comicItem))
 
-fun getRamdonImage(comicItem: ComicItem): String {
+fun getRandomImage(comicItem: ComicItem): String {
     return when {
         comicItem.images.isEmpty() -> comicItem.thumbnail.path
+        comicItem.images.size == 1 -> comicItem.images[0].path
         else -> comicItem.images[getRandomNumber(comicItem.images.size - 1, 0)].path
     }
 }

@@ -27,7 +27,7 @@ class ComicItemViewModel(navigator: Navigator?, id: Int, name: String, image: St
     @Bindable
     fun getImage(): String = mImage
 
-    fun onItemClicked(source: Object) {
+    fun onItemClicked(source: Any) {
         mNavigator?.onComicSelected(mId)
     }
 

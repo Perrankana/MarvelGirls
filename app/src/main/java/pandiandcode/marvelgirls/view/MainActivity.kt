@@ -19,22 +19,5 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         viewModel.onLoad(savedInstanceState)
-
-        val navigator = object: Navigator{
-            override fun onComicSelected(comicId: Int) {
-                goToComicDetail(comicId)
-            }
-        }
-
-        viewModel.setNavigator(navigator)
-    }
-
-    fun goToComicDetail(comicId: Int) {
-        startActivity(ComicDetailActivity.newIntent(this, comicId))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.setNavigator(null)
     }
 }

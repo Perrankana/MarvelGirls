@@ -14,21 +14,20 @@ import pandiandcode.marvelgirls.viewmodel.BaseViewModel
 /**
  * Created by Rocio Ortega on 18/11/2017.
  */
-class MainViewModel(comicsUseCase: GetComicsUseCase) : BaseViewModel() {
+class MainViewModel(navigator: Navigator, comicsUseCase: GetComicsUseCase) : BaseViewModel() {
 
     var mComicsUseCase = comicsUseCase
     var mComicsList = ObservableArrayList<ComicItemViewModel>()
-    private var mNavigator: Navigator? = null
+    var mProgressVisible = true
 
-    fun setNavigator(navigator: Navigator?) {
-        mNavigator = navigator
-    }
+    private var mNavigator: Navigator = navigator
 
     @Bindable
-    fun isProgressVisible(): Boolean = true
+    fun isProgressVisible(): Boolean = mProgressVisible
 
     fun setProgressVisible(progressVisible: Boolean) {
-
+        mProgressVisible = progressVisible
+        notifyPropertyChanged(BR.progressVisible)
     }
 
     @Bindable
@@ -41,7 +40,7 @@ class MainViewModel(comicsUseCase: GetComicsUseCase) : BaseViewModel() {
 
     }
 
-    fun onComicsDataListLoaded(comicListData: ComicListData) {
+    private fun onComicsDataListLoaded(comicListData: ComicListData) {
         mComicsList.clear()
         comicListData.comicList.forEach {
             mComicsList.add(ComicItemViewModel( mNavigator,it.id, it.name, it.thumbnail))

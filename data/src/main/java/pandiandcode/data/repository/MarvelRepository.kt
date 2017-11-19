@@ -9,16 +9,21 @@ import pandiandcode.databoundary.ComicRepository
 /**
  * Created by Rocio Ortega on 17/11/2017.
  */
-class MarvelRepository(marvelDataSource: MarvelDataSource, localSource: MarvelDataSource) : ComicRepository {
+public class MarvelRepository(marvelDataSource: MarvelDataSource, localSource: MarvelDataSource) : ComicRepository {
 
     var mRemoteSource = marvelDataSource
     var mLocalSource = localSource
 
-    override fun getComics(characterId: Int): Observable<ComicListData> =
-            mRemoteSource.getComics(characterId)
-                    .doOnNext { comicListData ->
-                        mLocalSource.saveComics(characterId, comicListData)
-                    }
+    override fun getComics(characterId: Int): Observable<ComicListData> {
+        if (mLocalSource.containsCharacterComic(characterId)) {
+            return mLocalSource.getComics(characterId)
+        }
+        return mRemoteSource.getComics(characterId)
+                .doOnNext { comicListData ->
+                    mLocalSource.saveComics(characterId, comicListData)
+                }
+    }
+
 
     override fun getComic(comicId: Int): Observable<ComicData> = mLocalSource.getComic(comicId)
 }

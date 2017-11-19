@@ -20,6 +20,7 @@ ext {
 
     //Testing
     jUnitVersion = '4.12'
+    assertJVersion = '1.7.1'
     espressoVersion = '3.0.1'
     testRunnerVersion = '1.0.1'
     mockitoVersion = '1.9.5'
@@ -55,6 +56,8 @@ ext {
 
     domainTestDependencies = [
             junit:              "junit:junit:${jUnitVersion}",
+            mockito:            "org.mockito:mockito-core:${mockitoVersion}",
+            assertj:            "org.assertj:assertj-core:${assertJVersion}"
     ]
 
     dataBoundaryDependencies = [

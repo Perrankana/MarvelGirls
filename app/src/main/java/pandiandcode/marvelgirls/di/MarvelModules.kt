@@ -1,5 +1,6 @@
 package pandiandcode.marvelgirls.di
 
+import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -17,6 +18,7 @@ import pandiandcode.data.repository.MarvelRepository
 import pandiandcode.databoundary.ComicRepository
 import pandiandcode.domain.usecases.GetComicUseCase
 import pandiandcode.domain.usecases.GetComicsUseCase
+import pandiandcode.marvelgirls.navigation.Navigator
 import pandiandcode.marvelgirls.utils.generateMd5
 import pandiandcode.marvelgirls.viewmodel.comicdescription.ComicDetailViewModel
 import pandiandcode.marvelgirls.viewmodel.comics.MainViewModel
@@ -32,15 +34,18 @@ import java.util.concurrent.TimeUnit
 fun myAppModules() = listOf(MyModule(), RemoteDataSourceModule())
 
 class MyModule : AndroidModule() {
+
     override fun context() = applicationContext {
 
         context(name = "MainActivity") {
-            provide { MainViewModel(get()) }
+            provide { MainViewModel(get(), get()) }
         }
 
         context(name = "ComicDetailActivity") {
             provide { ComicDetailViewModel(get()) }
         }
+
+        provide { provideNavigator(androidApplication.applicationContext) }
 
         provide { provideGetComicsUseCase(get()) }
 
@@ -55,6 +60,8 @@ class MyModule : AndroidModule() {
 
 
 }
+
+fun provideNavigator(context: Context): Navigator = Navigator(context)
 
 fun provideGetComicsUseCase(marvelRepository: ComicRepository): GetComicsUseCase
         = GetComicsUseCase(Schedulers.io(), AndroidSchedulers.mainThread(), marvelRepository)

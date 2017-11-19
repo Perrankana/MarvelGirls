@@ -8,7 +8,7 @@ import io.reactivex.Observable
  */
 interface ComicRepository {
 
-    fun getComics(characterId: Int) : Observable<ComicListData>
+    fun getComics(characterId: Int, characterName: String) : Observable<ComicListData>
 
     fun getComic(comicId: Int) : Observable<ComicData>
 }

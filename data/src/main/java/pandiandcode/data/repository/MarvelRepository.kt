@@ -14,11 +14,11 @@ public class MarvelRepository(marvelDataSource: MarvelDataSource, localSource: M
     var mRemoteSource = marvelDataSource
     var mLocalSource = localSource
 
-    override fun getComics(characterId: Int): Observable<ComicListData> {
+    override fun getComics(characterId: Int, characterName: String): Observable<ComicListData> {
         if (mLocalSource.containsCharacterComic(characterId)) {
-            return mLocalSource.getComics(characterId)
+            return mLocalSource.getComics(characterId, characterName)
         }
-        return mRemoteSource.getComics(characterId)
+        return mRemoteSource.getComics(characterId, characterName)
                 .doOnNext { comicListData ->
                     mLocalSource.saveComics(characterId, comicListData)
                 }

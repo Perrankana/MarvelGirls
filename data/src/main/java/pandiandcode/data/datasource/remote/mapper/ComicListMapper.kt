@@ -8,10 +8,10 @@ import pandiandcode.databoundary.ComicListData
 /**
  * Created by Rocio Ortega on 17/11/2017.
  */
-fun toComicListData(comicList: ComicList): ComicListData {
+fun toComicListData(comicList: ComicList, characterName: String): ComicListData {
     val comicListData: ArrayList<ComicData> = ArrayList()
     comicList.data.results.forEach { comicListData.add(toComicData(it)) }
-    return ComicListData(comicListData)
+    return ComicListData(comicListData, characterName)
 }
 
 fun toComicData(comicItem: ComicItem): ComicData

@@ -10,7 +10,7 @@ import pandiandcode.databoundary.ComicListData
  */
 class InMemoryDataSource : MarvelDataSource {
 
-    override fun getComics(characterId: Int): Observable<ComicListData> {
+    override fun getComics(characterId: Int, characterName: String): Observable<ComicListData> {
         return when (characterId) {
             ComicStorage.characterId -> Observable.just(ComicStorage.comicListData)
             else -> Observable.just(null)

@@ -11,10 +11,10 @@ import pandiandcode.databoundary.ComicListData
  */
 class RetrofitDataSource(private val mMarvelDataApi: MarvelDataApi) : MarvelDataSource {
 
-    override fun getComics(characterId: Int): Observable<ComicListData> =
+    override fun getComics(characterId: Int, characterName: String): Observable<ComicListData> =
             mMarvelDataApi.getComics(characterId)
                     .flatMap { comicListResponse -> Observable.just(comicListResponse.body()) }
-                    .flatMap { comicList -> Observable.just(toComicListData(comicList)) }
+                    .flatMap { comicList -> Observable.just(toComicListData(comicList, characterName)) }
 
     override fun containsCharacterComic(characterId: Int): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

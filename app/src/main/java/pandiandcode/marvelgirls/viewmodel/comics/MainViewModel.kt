@@ -17,6 +17,7 @@ import pandiandcode.marvelgirls.viewmodel.BaseViewModel
 class MainViewModel(navigator: Navigator, comicsUseCase: GetComicsUseCase) : BaseViewModel() {
 
     var mComicsUseCase = comicsUseCase
+    var mCharacterName = ""
     var mComicsList = ObservableArrayList<ComicItemViewModel>()
     var mProgressVisible = true
 
@@ -31,6 +32,14 @@ class MainViewModel(navigator: Navigator, comicsUseCase: GetComicsUseCase) : Bas
     }
 
     @Bindable
+    fun getCharacterName() = mCharacterName
+
+    fun setCharacterName(characterName: String){
+        mCharacterName = characterName
+        notifyPropertyChanged(BR.characterName)
+    }
+
+    @Bindable
     fun getComicsList(): ObservableList<ComicItemViewModel> = mComicsList
 
     override fun onLoad(bundle : Bundle?) {
@@ -42,6 +51,7 @@ class MainViewModel(navigator: Navigator, comicsUseCase: GetComicsUseCase) : Bas
 
     private fun onComicsDataListLoaded(comicListData: ComicListData) {
         mComicsList.clear()
+        setCharacterName(comicListData.characterName)
         comicListData.comicList.forEach {
             mComicsList.add(ComicItemViewModel( mNavigator,it.id, it.name, it.thumbnail))
         }

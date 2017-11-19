@@ -10,7 +10,7 @@ import pandiandcode.databoundary.ComicListData
  */
 interface MarvelDataSource {
 
-    fun getComics(characterId: Int) : Observable<ComicListData>
+    fun getComics(characterId: Int, characterName: String) : Observable<ComicListData>
 
     fun saveComics(characterId: Int, comicListData: ComicListData)
 

@@ -16,6 +16,6 @@ abstract class QueryUseCase<R, in T>(workScheduler: Scheduler, observeScheduler:
                 .observeOn(mObserveScheduler)
 
 
-    protected abstract fun buildUseCaseObservable(params: T): Observable<R>
+    abstract fun buildUseCaseObservable(params: T): Observable<R>
 
 }

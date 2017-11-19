@@ -10,7 +10,8 @@ import java.util.*
 /**
  * Created by Rocio Ortega on 18/11/2017.
  */
-class GetComicsUseCase(workScheduler: Scheduler, observeScheduler: Scheduler, marvelRepository: ComicRepository) : QueryUseCase<ComicListData,
+open class GetComicsUseCase(workScheduler: Scheduler, observeScheduler: Scheduler, marvelRepository: ComicRepository) :
+QueryUseCase<ComicListData,
         ComicsParam>(workScheduler, observeScheduler) {
 
     var mMarvelRepository: ComicRepository = marvelRepository
@@ -24,10 +25,10 @@ class ComicsParam {
     var characterId: Int = getRandomComicCharacter()
 
     private fun getRandomComicCharacter(): Int =
-            getMarvelGirlsCharacters()[getRandomNumber(10, 0)]
+            getMarvelGirlsCharacters()[getRandomNumber(getMarvelGirlsCharacters().size - 1, 0)]
 }
 
 fun getRandomNumber(to: Int, from: Int): Int = Random().nextInt(to - from) + from
 
 fun getMarvelGirlsCharacters(): IntArray = intArrayOf(1009629, 1009157, 1009609, 1009189, 1010338, 1009438, 1017577,
-        1009562, 1010972, 1010971)
+        1009562, 1010971)

@@ -6,7 +6,7 @@ import pandiandcode.marvelgirls.view.ComicDetailActivity
 /**
  * Created by Rocio Ortega on 18/11/2017.
  */
-class Navigator(var context: Context) {
+open class Navigator(var context: Context) {
 
     fun onComicSelected(comicId: Int) {
         context.startActivity(ComicDetailActivity.newIntent(context, comicId))

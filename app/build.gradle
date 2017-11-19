@@ -58,7 +58,9 @@ dependencies {
     implementation presentationDependencies.retrofit2GsonConverter
     implementation presentationDependencies.loggingInterceptor
 
+    testImplementation presentationTestDependencies.robolectric
     testImplementation presentationTestDependencies.junit
+    testImplementation presentationTestDependencies.mockito
     testImplementation presentationTestDependencies.testKoin
 
     androidTestImplementation presentationTestDependencies.testRunner
